@@ -1,0 +1,84 @@
+* {
+  margin    : 0;
+  padding   : 0;
+  box-sizing: border-box;
+}
+
+div {
+  height       : fit-content;
+  width        : fit-content;
+  margin-bottom: 1%;
+}
+
+.App {
+  width : 99vw;
+  height: 99vh;
+}
+button{
+  cursor: pointer;
+}
+
+header {
+  text-align: center;
+  padding   : 1%;
+}
+
+main {
+  background-color: violet;
+  padding         : 1% 0 1% 0;
+}
+
+
+main>div {
+  margin: 2% auto;
+}
+
+main div div {
+  padding: 5%;
+  display: flex;
+
+
+}
+
+main div div>button {
+  margin-left: 2%;
+ width: 100%;
+  font-size  : 1em;
+  text-align: center;
+
+}
+.buttons
+{
+  width: 100%;
+  justify-content: center;
+}
+
+table {
+
+  border-collapse : collapse;
+  background-color: white;
+}
+
+table tr th,
+td {
+  border    : solid;
+  padding   : 1%;
+  width     : 15vw;
+  text-align: center;
+}
+
+th ,td{
+  font-size: 1.4em;
+}
+.picture
+{
+  width: 50%;
+}
+.delete
+{
+  background-color: red;
+  font-size: 1.4em;
+  padding:1%;
+  color: white;
+  border-radius: 5px;
+}
