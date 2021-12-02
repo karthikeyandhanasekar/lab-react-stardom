@@ -1,24 +1,16 @@
 import React, { useState } from 'react'
 import prostar from '../resources/prostars.json'
 
-const starjson = prostar
+
 const Home = () => {
     const [filterstar, getfilter] = useState([])
 
 
 
-    const fulltable = prostar.map(ele =>
-        <tr key={ele.id}>
-            <td><img src={ele.pictureUrl} alt={ele.name} className={"picture"} /> </td>
-            <td>{ele.name}</td>
-            <td>{ele.popularity}</td>
-            <td><button className={"delete"} onClick={() => deletestart(ele.id)}>Delete</button></td>
-        </tr>)
 
     const sortbyname = () => {
         let temp = filterstar
         temp.length = 0
-        console.log(prostar);
         prostar.sort((a, b) => a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1)
         temp = [...prostar]
         getfilter(temp)
@@ -28,27 +20,35 @@ const Home = () => {
     const sortbypopularity = () => {
         let temp = filterstar
         temp.length = 0
-        prostar.sort((a, b) => a.popularity - b.popularity)
+        prostar.sort((a, b) => b.popularity - a.popularity)
         temp = [...prostar]
+
         getfilter(temp)
 
     }
 
     const deletestart = (id) => {
-        let temp = filterstar
+        console.log(id);
+        let temp = prostar
         temp = temp.filter(ele => ele.id !== id)
+
         getfilter(temp)
     }
-    const modifylist = filterstar ? filterstar.map(ele =>
+    const modifylist = filterstar[0] ? filterstar.map(ele =>
         <tr key={ele.id}>
             <td><img src={ele.pictureUrl} alt={ele.name} className={"picture"} /> </td>
             <td>{ele.name}</td>
             <td>{ele.popularity}</td>
             <td><button className={"delete"} onClick={() => deletestart(ele.id)} >Delete</button></td>
-        </tr>) : undefined
+        </tr>) : prostar.map(ele =>
+            <tr key={ele.id}>
+                <td><img src={ele.pictureUrl} alt={ele.name} className={"picture"} /> </td>
+                <td>{ele.name}</td>
+                <td>{ele.popularity}</td>
+                <td><button className={"delete"} onClick={() => deletestart(ele.id)}>Delete</button></td>
+            </tr>)
 
 
-    console.log(prostar);
 
     return (
         <React.Fragment>
@@ -68,7 +68,7 @@ const Home = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {modifylist[0] ? modifylist : fulltable}
+                        {modifylist}
                     </tbody>
                 </table>
             </div>
